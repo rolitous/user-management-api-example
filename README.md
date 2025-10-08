@@ -1,53 +1,90 @@
-# User Management API (CRUD) - Node.js + Express + Prisma + PostgreSQL
+# User Management API Example
 
-This is a starter project to learn how to build a simple REST API using Node.js, Express and Prisma (Postgres).
+A simple **User Management REST API** built with **Node.js, Express, Prisma, and PostgreSQL**.
 
-## Requirements
-- Node.js 16+
-- npm
-- Docker & Docker Compose (recommended for PostgreSQL local)
+---
 
-## Quick start (development)
+## 🧾 Table of Contents
 
-1. Copy `.env.example` to `.env` and adjust `DATABASE_URL` if needed.
-2. Start a local Postgres with Docker Compose:
-   ```bash
-   docker-compose up -d
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-4. Generate Prisma client and run migrations:
-   ```bash
-   npx prisma generate
-   npx prisma migrate dev --name init
-   ```
-5. Seed sample data (optional):
-   ```bash
-   npm run seed
-   ```
-6. Start server:
-   ```bash
-   npm run dev
-   ```
-7. API base: `http://localhost:3000/api/users`
+- [About](#about)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
 
-## Endpoints
+---
+
+## About
+
+This project demonstrates a basic CRUD API for user management.  
+It’s designed as a learning resource or a starting point for building scalable back-end applications.
+
+**Features:**
+- Create, read, update, and delete users  
+- Input validation and error handling  
+- Database persistence using Prisma ORM  
+- Modular and extensible project structure  
+
+---
+
+## Tech Stack
+
+| Component | Purpose |
+|------------|----------|
+| **Node.js** | Runtime environment |
+| **Express** | Web framework / routing |
+| **Prisma** | Database ORM |
+| **PostgreSQL** | Relational database |
+| **dotenv** | Environment variables management |
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/rolitous/user-management-api-example.git
+cd user-management-api-example
+
+npm install
+# or
+# yarn install
+```
+
+## Configuration
+
+Create a .env file in the root directory with the following content:
+
+DATABASE_URL="postgresql://user:password@localhost:5432/your_database"
+PORT=3000
+
+Run Prisma migrations (or generate the client):
+
+```bash
+npx prisma migrate dev --name init
+# or
+npx prisma generate
+```
+
+# Usage
+
+Start the development server:
+
+```bash
+npm run dev
+# or
+npm start
+```
+
+By default, the API will run on the port defined in the .env file.
+Test the endpoints using Postman, Insomnia, or cURL.
+
+## API Endpoints
+
 - `POST /api/users` - Create user (body: `{ "name": "...", "email": "..." }`)
 - `GET /api/users` - List users
 - `GET /api/users/:id` - Get user by id
 - `PUT /api/users/:id` - Update user
 - `DELETE /api/users/:id` - Delete user
-
-## Testing
-- Basic tests are included using Jest + Supertest. Make sure your DB is up and migrations ran before running tests:
-  ```bash
-  npm test
-  ```
-
-## Next steps / learning suggestions
-- Add authentication (JWT)
-- Add pagination and query filters
-- Add input sanitization / rate limiting
-- Add CI (GitHub Actions) and deploy with Docker
